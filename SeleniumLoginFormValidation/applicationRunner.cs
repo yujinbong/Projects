@@ -6,6 +6,8 @@ using OpenQA.Selenium.Chrome;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs;
 using WebDriverManager.DriverConfigs.Impl;
+using OpenQA.Selenium.Support.UI;
+
 
 
 
@@ -13,6 +15,8 @@ namespace SeleniumFirstProject
 {
    public class SimpleApplicationRunner
     {
+        public static object ExpectedConditions { get; private set; }
+
         public static void Main(string[] args)
         {
 
@@ -48,8 +52,50 @@ namespace SeleniumFirstProject
 
             Assert.AreEqual(expectedItems, actualItems);
 
-         //   Assert.True(actualItems.All(item => item.ToLower().Contains("invalid search Phrase")));
-           // driver.Quit();
+            string currentUrl = driver.Url;
+
+            if (currentUrl.Contains("website2.html"))
+            {
+
+                System.Threading.Thread.Sleep(2000);
+                IWebElement typeSearch = driver.FindElement(By.CssSelector("[name='q']"));
+                string Search = "Youtube";
+                typeSearch.SendKeys(Search);
+                typeSearch.SendKeys(Keys.Enter);
+                System.Threading.Thread.Sleep(2000);
+                string newUrl = driver.Url;
+
+
+            }
+            if (currentUrl.Contains("https://www.google.com/search?q=Youtube"))
+            {
+                string currentWindowHandle = driver.CurrentWindowHandle;
+
+                foreach (string windowHandle in driver.WindowHandles)
+                {
+                    if (windowHandle != currentWindowHandle)
+                    {
+                        driver.SwitchTo().Window(windowHandle);
+                        break;
+                    }
+                }
+                IWebElement element = driver.FindElement(By.CssSelector(".g"));
+                element.Click();
+           
+                driver.Close();
+
+                driver.SwitchTo().Window(currentWindowHandle);
+            }
+
+
+
+
+
+
+
+
+
+
 
         }
     }
