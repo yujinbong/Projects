@@ -56,42 +56,38 @@ namespace SeleniumFirstProject
 
             if (currentUrl.Contains("website2.html"))
             {
-
-                System.Threading.Thread.Sleep(2000);
                 IWebElement typeSearch = driver.FindElement(By.CssSelector("[name='q']"));
                 string Search = "Youtube";
                 typeSearch.SendKeys(Search);
                 typeSearch.SendKeys(Keys.Enter);
                 System.Threading.Thread.Sleep(2000);
-                string newUrl = driver.Url;
 
 
             }
+
+
+
             if (currentUrl.Contains("https://www.google.com/search?q=Youtube"))
             {
                 string currentWindowHandle = driver.CurrentWindowHandle;
-
                 foreach (string windowHandle in driver.WindowHandles)
                 {
                     if (windowHandle != currentWindowHandle)
                     {
                         driver.SwitchTo().Window(windowHandle);
+
+                        IWebElement element = driver.FindElement(By.CssSelector("a.l"));
+                        element.Click();
+
+      
+                        driver.Close();
+
                         break;
                     }
                 }
-                IWebElement element = driver.FindElement(By.CssSelector(".g"));
-                element.Click();
-           
-                driver.Close();
 
                 driver.SwitchTo().Window(currentWindowHandle);
             }
-
-
-
-
-
-
 
 
 
