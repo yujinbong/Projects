@@ -62,24 +62,16 @@ namespace SeleniumFirstProject
                 typeSearch.SendKeys(Keys.Enter);
                 System.Threading.Thread.Sleep(2000);
 
-
-            }
-
-
-
-            if (currentUrl.Contains("https://www.google.com/search?q=Youtube"))
-            {
+       
                 string currentWindowHandle = driver.CurrentWindowHandle;
+
                 foreach (string windowHandle in driver.WindowHandles)
                 {
                     if (windowHandle != currentWindowHandle)
                     {
                         driver.SwitchTo().Window(windowHandle);
 
-                        IWebElement element = driver.FindElement(By.CssSelector("a.l"));
-                        element.Click();
-
-      
+               
                         driver.Close();
 
                         break;
