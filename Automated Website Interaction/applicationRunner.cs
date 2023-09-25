@@ -15,11 +15,9 @@ namespace SeleniumFirstProject
 {
    public class SimpleApplicationRunner
     {
-        public static object ExpectedConditions { get; private set; }
 
         public static void Main(string[] args)
         {
-
             new DriverManager().SetUpDriver(new ChromeConfig());
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
@@ -71,7 +69,6 @@ namespace SeleniumFirstProject
                     {
                         driver.SwitchTo().Window(windowHandle);
 
-               
                         driver.Close();
 
                         break;
