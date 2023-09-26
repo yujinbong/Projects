@@ -56,6 +56,7 @@ namespace SeleniumFirstProject
             {
                 IWebElement typeSearch = driver.FindElement(By.CssSelector("[name='q']"));
                 string Search = "Youtube";
+                string Search2 = "fail";
                 typeSearch.SendKeys(Search);
                 typeSearch.SendKeys(Keys.Enter);
                 System.Threading.Thread.Sleep(2000);
@@ -68,20 +69,14 @@ namespace SeleniumFirstProject
                     if (windowHandle != currentWindowHandle)
                     {
                         driver.SwitchTo().Window(windowHandle);
+                      
+                       
 
-                        driver.Close();
-
-                        break;
                     }
                 }
-
-                driver.SwitchTo().Window(currentWindowHandle);
+                IWebElement musicButton = driver.FindElement(By.CssSelector("div.GKS7s span.FMKtTb.UqcIvb[jsname='pIvPIe']"));
+                musicButton.Click();
             }
-
-
-
-
-
         }
     }
 
