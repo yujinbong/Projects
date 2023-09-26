@@ -7,6 +7,7 @@ using WebDriverManager;
 using WebDriverManager.DriverConfigs;
 using WebDriverManager.DriverConfigs.Impl;
 using OpenQA.Selenium.Support.UI;
+using System.Diagnostics;
 
 
 
@@ -70,19 +71,15 @@ namespace SeleniumFirstProject
                     {
                         driver.SwitchTo().Window(windowHandle);
                       
-                       
 
                     }
                 }
                 IWebElement youtubeLink = driver.FindElement(By.CssSelector("h3.LC20lb.MBeuO.DKV0Md"));
                 youtubeLink.Click();
-
+                System.Threading.Thread.Sleep(2000);
+                driver.Close();
+                Process.Start("explorer.exe", "chrome");
             }
-
-
-
-
-
         }
     }
 
