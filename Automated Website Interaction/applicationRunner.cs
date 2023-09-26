@@ -74,9 +74,15 @@ namespace SeleniumFirstProject
 
                     }
                 }
-                IWebElement musicButton = driver.FindElement(By.CssSelector("div.GKS7s span.FMKtTb.UqcIvb[jsname='pIvPIe']"));
-                musicButton.Click();
+                IWebElement youtubeLink = driver.FindElement(By.CssSelector("h3.LC20lb.MBeuO.DKV0Md"));
+                youtubeLink.Click();
+
             }
+
+
+
+
+
         }
     }
 
