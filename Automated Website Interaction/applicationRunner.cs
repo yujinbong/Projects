@@ -78,7 +78,7 @@ namespace SeleniumFirstProject
                 youtubeLink.Click();
                 System.Threading.Thread.Sleep(2000);
                 driver.Close();
-                Process.Start("explorer.exe", "chrome");
+         
             }
         }
     }
