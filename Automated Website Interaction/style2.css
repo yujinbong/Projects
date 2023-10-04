@@ -14,8 +14,8 @@ box-sizing: border-box;
 :root {
     --containter-color: #1a1e21;
     --second-color:#fd8f44;
-    --text-color:#172317;
-    --bg-color:#fff;
+    --text-color:#fff;
+    --bg-color:#172317;
 }
 ::selection{
     color: vr(--bg-color);
@@ -87,8 +87,19 @@ header {
 .search-form {
     text-align: center; 
     margin-top: 10px; 
+    margin-right: 250px;
+    
   }
   
   .home text{
+    color:var(--bg-color);
+    text-align:center;
+  }
+  .home-title{
+    font-size:3.5rem;
+  }
+  .home-subtitle{
+    font-size : 1rem;
+    font-weight:400;
     
   }
