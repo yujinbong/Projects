@@ -8,7 +8,7 @@ namespace SplitPay
 {
     internal class Program
     {
-        class Game
+        class Game 
         {
             private List<string> players;
             public string Player { get; set; }
@@ -19,7 +19,7 @@ namespace SplitPay
             {
                 Console.WriteLine("Please enter the names of the players: ");
 
-                Player = new List
+                players = new List<string>();
             }
 
 
@@ -32,3 +32,4 @@ namespace SplitPay
         }
     }
 }
+
