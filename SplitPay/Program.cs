@@ -20,6 +20,24 @@ namespace SplitPay
                 Console.WriteLine("Please enter the names of the players: ");
 
                 players = new List<string>();
+                for(int i=0; i< 6; i++)  //maximum 6 players
+                {
+                    Console.Write($"Player {i + 1}: ");
+                  //Console.Write("Player " + (i + 1) + ": ");
+
+                    string playerName = Console.ReadLine(); //receive player list from user
+                    if (!string.IsNullOrEmpty(playerName))
+                    {
+                        players.Add(playerName);
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
+                Console.WriteLine("Game environment set up complete!");
+                Console.WriteLine($"Total {players.Count} players are ready to play the game.");
             }
 
 
