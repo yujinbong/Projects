@@ -1,53 +1,63 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SplitPay
 {
     internal class Program
     {
-        class Game 
+        class Game
         {
             private List<string> players;
-            public string Player { get; set; }
-            public int Ladder { get; set; }
-            public string LadderStatement { get; set; }
+            private int ladderSize;
 
             public void StartGame()
             {
-                Console.WriteLine("Please enter the names of the players: (Start='q')");
+                Console.WriteLine("Please enter the number of players (2-6):");
+                int numPlayers = 0;
+                while (true)
+                {
+                    Console.Write("Number of players: ");
+                    string input = Console.ReadLine();
+                    if (int.TryParse(input, out numPlayers) && numPlayers >= 2 && numPlayers <= 6)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input! Please enter a number between 2 and 6.");
+                    }
+                }
+
+                Console.WriteLine("Please enter the ladder size:");
+                int ladderSize = 0;
+                while (true)
+                {
+                    Console.Write("Ladder size: ");
+                    string input = Console.ReadLine();
+                    if (int.TryParse(input, out ladderSize) && ladderSize > 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input! Please enter a positive integer.");
+                    }
+                }
+
+                Console.WriteLine($"Starting a game with {numPlayers} players and a ladder size of {ladderSize}.");
 
                 players = new List<string>();
-                for(int i=0; i< 6; i++)  //maximum 6 players
+                for (int i = 0; i < numPlayers; i++)
                 {
                     Console.Write($"Player {i + 1}: ");
-                  //Console.Write("Player " + (i + 1) + ": ");
-
-                    string playerName = Console.ReadLine(); //receive player list from user
-                    if (string.IsNullOrEmpty(playerName))
-                    {
-                        Console.WriteLine("Please type player name:");
-                        i--;  
-                        continue; 
-                    }
-                    else if (playerName.ToLower() == "q")
-                    {
-                        break; 
-                    }
-
+                    string playerName = Console.ReadLine();
                     players.Add(playerName);
-
                 }
+
                 Console.WriteLine("Game environment set up complete!");
                 Console.WriteLine($"Total {players.Count} players are ready to play the game.");
             }
-
-
         }
-
-        
 
         static void Main(string[] args)
         {
@@ -56,4 +66,3 @@ namespace SplitPay
         }
     }
 }
-
